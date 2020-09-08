@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './auth'
+import vouchers from './vouchers'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    error:null
   },
   mutations: {
   },
@@ -17,6 +17,6 @@ export default new Vuex.Store({
     
   },
   modules :{
-    auth
+    auth,vouchers
   }
 })

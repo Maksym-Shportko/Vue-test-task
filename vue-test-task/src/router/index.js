@@ -17,9 +17,15 @@ Vue.use(VueRouter)
   },
   {
     path: '/',
-    name: 'Home',
+    name:'Voucher',
     meta: {layout:'main'},
-    component: ()=> import('../views/Home.vue'),
+    component:()=>import('../views/Vouchers'),
+  },
+  {
+    path: '/inbox',
+    name: 'Inbox',
+    meta: {layout:'empty'},
+    component: ()=> import('../views/Inbox'),
   },
 
 ]

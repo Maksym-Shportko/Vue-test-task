@@ -6,11 +6,17 @@
 </template>
 
 <script>
+
 import TheNavbar from '../components/Base/TheNavbar.vue'
+
 export default {
+
 	name:'EmptyLayout',
+
 	components:{TheNavbar}
+
 }
+
 </script>
 
 <style lang="scss" scoped>

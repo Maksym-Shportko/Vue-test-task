@@ -1,32 +1,31 @@
 <template>
 	<section class="main-layout">
 		<TheNavbar/>
-		<SearchForm/>
-		<main>
-		<FilterFields/>
 			<router-view/>
-		</main>
+		<TheFooter/>
 	</section>
 </template>
 
 <script>
-	import TheNavbar from '../components/Base/TheNavbar'
-	import SearchForm from '../components/SearchForm'
-	import FilterFields from '../components/FilterFields'
 
+import TheNavbar from '../components/Base/TheNavbar'
+import TheFooter from '../components/Base/TheFooter'
+	
 export default {
+
 	name:'MainLayout',
+
 	components:{
 		TheNavbar,
-		SearchForm,
-		FilterFields
+		TheFooter
 	}
+
 }
+
 </script>
 
 <style lang="scss" scoped>
 	.main-layout {
-		background: linear-gradient(180deg, #090810 0%, #171236 100%);
-		height: 166px;
+	
 	}
 </style>

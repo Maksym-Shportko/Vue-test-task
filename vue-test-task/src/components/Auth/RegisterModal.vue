@@ -1,6 +1,6 @@
 <template>
 	<section class="register">
-		<form action="">
+		<form action="" @submit.prevent="registerHandler">
 			<div class="form-group">
 				<div class="register-form d-flex flex-column">
 				<h3 class="text-center">Register</h3>
@@ -14,15 +14,15 @@
 				</div>
 				<div class="mx-auto d-flex flex-column position-relative">
 					<label for="password">PASSWORD</label>
-					<input v-model="password" type="text" id="password" class="register-form__input">
-					<span><img class="show-hide-password" src="../../assets/images/Shape.svg" alt=""></span>
+					<input v-model="password" :type="isShowPwd ? 'text' : 'password'" id="password" class="register-form__input">
+					<span @click="isShowPwd = !isShowPwd"><img class="show-hide-password" src="../../assets/images/Shape.svg" alt=""></span>
 				</div>
 					<div class="mx-auto d-flex flex-column position-relative">
 					<label for="password">PASSWORD AGAIN</label>
-					<input v-model="confirmPassword" type="text" id="password" class="register-form__input">
-					<span><img class="show-hide-password" src="../../assets/images/Shape.svg" alt=""></span>
+					<input v-model="confirmPassword" :type="isShowPwd ? 'text' : 'password'" id="password" class="register-form__input">
+					<span @click="isShowPwd = !isShowPwd"><img class="show-hide-password" src="../../assets/images/Shape.svg" alt=""></span>
 				</div>
-				<button class="btn register-form__submit mx-auto text-white mt-3">Continue</button>
+				<button type="submit" class="btn register-form__submit mx-auto text-white mt-3">Continue</button>
 				</div>
 			</div>
 			<div class="register-form text-center">
@@ -33,26 +33,60 @@
 </template>
 
 <script>
+
 export default {
+
 	name:'RegisterModal',
+
 	data:()=>{
+
 		return{
+
 			email:'',
+
 			fullName:'',
+
 			password:'',
-			confirmPassword:''
+
+			confirmPassword:'',
+
+			isShowPwd: false,
+
+		}
+
+	},
+
+	methods: {
+
+		async	registerHandler() {
+			const formData = {
+				name:this.fullName,
+				email:this.email,
+				password:this.password,
+				confirmPassword:this.confirmPassword
+			}
+			try {
+				await	this.$store.dispatch('register',formData)
+				this.$router.push('/')
+			}catch(e) {
+				console.log(e)
+			}
 		}
 	},
+
 	computed: {
+
 		layout() {
 			return	console.log(this.$route.meta);
 		}
+
 	}
 }
 </script>
 
 <style lang="scss" scoped>
 	.register{
+		margin-top: 75px;
 		&-form {
 			background: #FFFFFF;
 			box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);

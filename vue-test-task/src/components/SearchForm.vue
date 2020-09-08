@@ -1,15 +1,15 @@
 <template>
-	<section class="search-form">
+	<section class="search-form pb-3">
 		<div class="container">
 			<div class="row justify-content-center">
-					<div class="search-wrapper d-flex">
-						<div class="search-input position-relative">
+					<div class="search-wrapper d-flex flex-wrap">
+						<div class="mb-2 search-input position-relative">
 							<input type="text" class="search-form-input " placeholder="Search products by name">
 						</div>
-						<div class="location-input position-relative">
+						<div class="mb-2 location-input position-relative">
 						<input type="text" class="search-form-input" placeholder="Location">
 						</div>
-						<button class="search-button text-white">SEARCH</button>
+						<button class="mb-2 search-button text-white">SEARCH</button>
 					</div>
 			</div>
 		</div>
@@ -18,9 +18,13 @@
 
 
 <script>
+
 export default {
+
 	name:'SearchForm'
+
 }
+
 </script>
 
 
@@ -64,6 +68,6 @@ export default {
 		border:none
 	}
 	.search-wrapper{
-		margin-top: 35px;
+		margin-top: 30px;
 	}
 </style>

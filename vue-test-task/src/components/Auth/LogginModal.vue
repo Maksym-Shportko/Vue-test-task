@@ -10,8 +10,8 @@
 				</div>
 				<div class="mx-auto d-flex flex-column position-relative">
 					<label for="password">PASSWORD</label>
-					<input v-model="password" type="text" id="password" class="login-form__input">
-					<span><img class="show-hide-password" src="../../assets/images/Shape.svg" alt=""></span>
+					<input v-model="password"  :type="isShowPwd ? 'text' : 'password'" id="password" class="login-form__input">
+					<span @click="isShowPwd = !isShowPwd"><img class="show-hide-password" src="../../assets/images/Shape.svg" alt=""></span>
 				</div>
 				<router-link to="/"><div class="text-right pb-3">Don’t remember password?</div></router-link>
 				<button @click.prevent="submitHandler" class="btn login-form__submit mx-auto text-white">Continue</button>
@@ -25,17 +25,27 @@
 </template>
 
 <script>
+
 export default {
+
 	name:'LogginModal',
 
 	data:()=>{
+
 		return{
+			
 			email:'',
-			password:''
+
+			password:'',
+
+			isShowPwd: false,
+
 		}
+
 	},
 
 	methods: {
+
 		async	submitHandler() {
 			const formData = {
 				email:this.email,
@@ -56,6 +66,7 @@ export default {
 
 <style lang="scss" scoped>
 	.login{
+		margin-top: 75px;
 		&-form {
 			background: #FFFFFF;
 			box-shadow: 0px 2px 42px rgba(0, 0, 0, 0.111233);
